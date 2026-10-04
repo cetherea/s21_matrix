@@ -6,6 +6,7 @@ int main()
     SRunner *sr = srunner_create(NULL);
 
     srunner_add_suite(sr, suite_create_matrix());
+    srunner_add_suite(sr, suite_remove_matrix());
 
     srunner_run_all(sr, CK_NORMAL);
 
