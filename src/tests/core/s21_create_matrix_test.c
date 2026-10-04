@@ -16,6 +16,8 @@ START_TEST(basic_test)
     {
         ck_assert_ptr_nonnull(matrix.matrix[i]);
     }
+
+    s21_remove_matrix(&matrix);
 }
 END_TEST
 
@@ -28,6 +30,8 @@ START_TEST(negative_error_test)
 
     ck_assert_int_eq(error, 1);
     ck_assert_ptr_null(matrix.matrix);
+
+    s21_remove_matrix(&matrix);
 }
 END_TEST
 
