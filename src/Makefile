@@ -48,7 +48,7 @@ style:
 
 clean:
 	rm -f $(TARGET) test test_gcov coverage.info
-	rm -f core/*.o comparison/*.o opyration/s21_sum_matrix.o
+	rm -f core/*.o comparison/*.o opyration/s21_sum_matrix.o opyration/s21_sub_matrix.o
 	rm -f core/*.gcda core/*.gcno comparison/*.gcda comparison/*.gcno opyration/*.gcda cpyration/*.gcno *.gcda *.gcno
 	rm -rf report
 
