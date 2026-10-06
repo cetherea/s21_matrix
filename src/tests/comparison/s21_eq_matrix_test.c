@@ -169,6 +169,7 @@ Suite *suite_eq_matrix(void)
     tcase_add_test(tcase_fail, different_size_test);
     tcase_add_test(tcase_fail, null_matrix_test);
     tcase_add_test(tcase_fail, empty_matrix_test);
+    tcase_add_test(tcase_fail, no_eq_test);
     suite_add_tcase(s, tcase_fail);
 
     return s;
