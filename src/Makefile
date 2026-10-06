@@ -42,7 +42,7 @@ gcov_report: clean
 
 
 style:
-	clang-format -i  core/*.c tests/*.c tests/core/*.c
+	clang-format -i  core/*.c tests/*.c tests/core/*.c tests/opyration/*.c opyration/*.c tests/comparison/*.c comparison/*.c
 
 
 clean:
@@ -52,4 +52,4 @@ clean:
 	rm -rf report
 
 
-.PHONY: all test clean gcov_report styl
+.PHONY: all test clean gcov_report style
