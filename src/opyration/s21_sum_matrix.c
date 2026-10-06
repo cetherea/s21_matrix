@@ -2,7 +2,7 @@
 int s21_sum_matrix(s21_matrix *A, s21_matrix *B, s21_matrix *result)
 {
     int error = 0;
-    if (A == NULL || B == NULL || A->matrix == NULL || B->matrix == NULL)
+    if (A == NULL || B == NULL || A->matrix == NULL || B->matrix == NULL || result == NULL)
     {
         error = 1;
     }
