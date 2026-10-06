@@ -67,9 +67,9 @@ END_TEST
 
 START_TEST(null_matrix_test)
 {
-    int rowsA = 3, rowsB = 4, columns = 4;
+    int rows = 3, columns = 4;
     s21_matrix A = {0}, result = {0};
-    s21_create_matrix(rowsA, columns, &A);
+    s21_create_matrix(rows, columns, &A);
 
     int error = s21_sum_matrix(&A, NULL, &result);
 
@@ -91,7 +91,6 @@ START_TEST(empty_matrix_test)
     ck_assert_int_eq(error, 1);
 }
 END_TEST
-
 
 Suite *suite_sum_matrix(void)
 {
