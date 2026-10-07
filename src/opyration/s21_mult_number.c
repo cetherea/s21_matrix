@@ -1,4 +1,4 @@
-#include "s21_matrix.h"
+#include "../s21_matrix.h"
 
 int s21_mult_number(s21_matrix *A, double number, s21_matrix *result)
 {
