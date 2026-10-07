@@ -10,6 +10,7 @@ int main()
   srunner_add_suite(sr, suite_sum_matrix());
   srunner_add_suite(sr, suite_sub_matrix());
   srunner_add_suite(sr, suite_mult_number_matrix());
+  srunner_add_suite(sr, suite_mult_matrix());
 
   srunner_run_all(sr, CK_NORMAL);
 

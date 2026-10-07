@@ -7,3 +7,4 @@ Suite *suite_eq_matrix(void);
 Suite *suite_sum_matrix(void);
 Suite *suite_sub_matrix(void);
 Suite *suite_mult_number_matrix(void);
+Suite *suite_mult_matrix(void);
