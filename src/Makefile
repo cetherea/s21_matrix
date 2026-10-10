@@ -3,7 +3,7 @@ CFLAGS =  -Wall -Werror -Wextra -std=c11
 
 TARGET = s21_matrix.a
 
-OBJ = core/s21_create_matrix.o core/s21_remove_matrix.o comparison/s21_eq_matrix.o opyration/s21_sum_matrix.o opyration/s21_sub_matrix.o  opyration/s21_mult_number.o opyration/s21_mult_matrix.o advanced/s21_transpose_matrix.o
+OBJ = core/s21_create_matrix.o core/s21_remove_matrix.o comparison/s21_eq_matrix.o opyration/s21_sum_matrix.o opyration/s21_sub_matrix.o  opyration/s21_mult_number.o opyration/s21_mult_matrix.o advanced/s21_transpose_matrix.o advanced/s21_determinant_matrix.o helpers/s21_utils.o
 
 CHECK_LIBS = -lcheck -lsubunit -lm -lpthread
 
@@ -40,26 +40,33 @@ opyration/s21_mult_matrix.o: opyration/s21_mult_matrix.c
 advanced/s21_transpose_matrix.o: advanced/s21_transpose_matrix.c
 	$(CC) $(CFLAGS) -c advanced/s21_transpose_matrix.c -o advanced/s21_transpose_matrix.o
 
+
+advanced/s21_determinant_matrix.o: advanced/s21_determinant_matrix.c
+	$(CC) $(CFLAGS) -c advanced/s21_determinant_matrix.c -o advanced/s21_determinant_matrix.o
+
+helpers/s21_utils.o: helpers/s21_utils.c
+	$(CC) $(CFLAGS) -c helpers/s21_utils.c -o helpers/s21_utils.o
+
 test : clean $(TARGET)
-	$(CC) $(CFLAGS) tests/s21_runner.c tests/core/s21_remove_matrix_test.c tests/core/s21_create_matrix_test.c tests/comparison/s21_eq_matrix_test.c tests/opyration/s21_sum_matrix_test.c tests/opyration/s21_sub_matrix_test.c  tests/opyration/s21_mult_number_test.c tests/opyration/s21_mult_matrix_test.c tests/advanced/s21_transpose_matrix_test.c $(TARGET) $(CHECK_LIBS) -o test
+	$(CC) $(CFLAGS) tests/s21_runner.c tests/core/s21_remove_matrix_test.c tests/core/s21_create_matrix_test.c tests/comparison/s21_eq_matrix_test.c tests/opyration/s21_sum_matrix_test.c tests/opyration/s21_sub_matrix_test.c  tests/opyration/s21_mult_number_test.c tests/opyration/s21_mult_matrix_test.c tests/advanced/s21_transpose_matrix_test.c  tests/advanced/s21_determinant_matrix_test.c $(TARGET) $(CHECK_LIBS) -o test
 	./test
 
 
 gcov_report: clean
-	$(CC) $(CFLAGS) $(GCOV_FLAGS) tests/core/s21_create_matrix_test.c tests/s21_runner.c core/s21_create_matrix.c tests/core/s21_remove_matrix_test.c core/s21_remove_matrix.c  tests/comparison/s21_eq_matrix_test.c comparison/s21_eq_matrix.c tests/opyration/s21_sum_matrix_test.c opyration/s21_sum_matrix.c tests/opyration/s21_sub_matrix_test.c opyration/s21_sub_matrix.c tests/opyration/s21_mult_number_test.c opyration/s21_mult_number.c  tests/opyration/s21_mult_matrix_test.c opyration/s21_mult_matrix.c  tests/advanced/s21_transpose_matrix_test.c  advanced/s21_transpose_matrix.c $(CHECK_LIBS) -o test_gcov
+	$(CC) $(CFLAGS) $(GCOV_FLAGS) tests/core/s21_create_matrix_test.c tests/s21_runner.c core/s21_create_matrix.c tests/core/s21_remove_matrix_test.c core/s21_remove_matrix.c  tests/comparison/s21_eq_matrix_test.c comparison/s21_eq_matrix.c tests/opyration/s21_sum_matrix_test.c opyration/s21_sum_matrix.c tests/opyration/s21_sub_matrix_test.c opyration/s21_sub_matrix.c tests/opyration/s21_mult_number_test.c opyration/s21_mult_number.c  tests/opyration/s21_mult_matrix_test.c opyration/s21_mult_matrix.c  tests/advanced/s21_transpose_matrix_test.c  advanced/s21_transpose_matrix.c tests/advanced/s21_determinant_matrix_test.c  advanced/s21_determinant_matrix.c helpers/s21_utils.c $(CHECK_LIBS) -o test_gcov
 	./test_gcov
 	lcov --capture --directory . --base-directory . --output-file coverage.info --no-external --ignore-errors inconsistent
 	genhtml coverage.info --output-directory report --ignore-errors source
 
 
 style:
-	clang-format -i  core/*.c tests/*.c tests/core/*.c tests/opyration/*.c opyration/*.c tests/comparison/*.c comparison/*.c
+	clang-format -i  core/*.c tests/*.c tests/core/*.c tests/opyration/*.c opyration/*.c tests/comparison/*.c comparison/*.c advanced/*.c tests/advanced/*.c helpers/*.c
 
 
 clean:
 	rm -f $(TARGET) test test_gcov coverage.info
-	rm -f core/*.o comparison/*.o opyration/*.o advanced/*.o
-	rm -f core/*.gcda core/*.gcno comparison/*.gcda comparison/*.gcno opyration/*.gcda cpyration/*.gcno advanced/*.gcda advanced/*.gcno *.gcda *.gcno
+	rm -f core/*.o comparison/*.o opyration/*.o advanced/*.o helpers/*.o
+	rm -f core/*.gcda core/*.gcno comparison/*.gcda comparison/*.gcno opyration/*.gcda cpyration/*.gcno advanced/*.gcda advanced/*.gcno helpers/*.gcda helpers/*.gcno *.gcda *.gcno
 	rm -rf report
 
 
