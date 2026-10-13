@@ -26,7 +26,7 @@ int s21_calc_complements(s21_matrix *A, s21_matrix *result)
                 double det = get_det(B);
                 result->matrix[i][j] = det * pow(-1, i+j);
 
-                s21_remove_matrix(&A);
+                s21_remove_matrix(&B);
 ;
             }
         }
