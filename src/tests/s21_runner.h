@@ -10,3 +10,4 @@ Suite *suite_mult_number_matrix(void);
 Suite *suite_mult_matrix(void);
 Suite *suite_transpose_matrix(void);
 Suite *suite_determinant_matrix(void);
+Suite *suite_complements_matrix(void);
