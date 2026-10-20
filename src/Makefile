@@ -3,7 +3,7 @@ CFLAGS =  -Wall -Werror -Wextra -std=c11
 
 TARGET = s21_matrix.a
 
-OBJ = core/s21_create_matrix.o core/s21_remove_matrix.o comparison/s21_eq_matrix.o opyration/s21_sum_matrix.o opyration/s21_sub_matrix.o  opyration/s21_mult_number.o opyration/s21_mult_matrix.o advanced/s21_transpose_matrix.o advanced/s21_determinant_matrix.o helpers/s21_utils.o advanced/s21_calc_complements.o
+OBJ = core/s21_create_matrix.o core/s21_remove_matrix.o comparison/s21_eq_matrix.o opyration/s21_sum_matrix.o opyration/s21_sub_matrix.o  opyration/s21_mult_number.o opyration/s21_mult_matrix.o advanced/s21_transpose_matrix.o advanced/s21_determinant_matrix.o helpers/s21_utils.o advanced/s21_calc_complements.o advanced/s21_inverse_matrix.o
 
 CHECK_LIBS = -lcheck -lsubunit -lm -lpthread
 
@@ -51,13 +51,16 @@ helpers/s21_utils.o: helpers/s21_utils.c
 advanced/s21_calc_complements.o: advanced/s21_calc_complements.c
 	$(CC) $(CFLAGS) -c advanced/s21_calc_complements.c -o advanced/s21_calc_complements.o
 
+advanced/s21_inverse_matrix.o: advanced/s21_inverse_matrix.c
+	$(CC) $(CFLAGS) -c advanced/s21_inverse_matrix.c -o advanced/s21_inverse_matrix.o
+
 test : clean $(TARGET)
-	$(CC) $(CFLAGS) tests/s21_runner.c tests/core/s21_remove_matrix_test.c tests/core/s21_create_matrix_test.c tests/comparison/s21_eq_matrix_test.c tests/opyration/s21_sum_matrix_test.c tests/opyration/s21_sub_matrix_test.c  tests/opyration/s21_mult_number_test.c tests/opyration/s21_mult_matrix_test.c tests/advanced/s21_transpose_matrix_test.c  tests/advanced/s21_determinant_matrix_test.c  tests/advanced/s21_calc_complements_test.c $(TARGET) $(CHECK_LIBS) -o test
+	$(CC) $(CFLAGS) tests/s21_runner.c tests/core/s21_remove_matrix_test.c tests/core/s21_create_matrix_test.c tests/comparison/s21_eq_matrix_test.c tests/opyration/s21_sum_matrix_test.c tests/opyration/s21_sub_matrix_test.c  tests/opyration/s21_mult_number_test.c tests/opyration/s21_mult_matrix_test.c tests/advanced/s21_transpose_matrix_test.c  tests/advanced/s21_determinant_matrix_test.c  tests/advanced/s21_calc_complements_test.c  tests/advanced/s21_inverse_matrix_test.c $(TARGET) $(CHECK_LIBS) -o test
 	./test
 
 
 gcov_report: clean
-	$(CC) $(CFLAGS) $(GCOV_FLAGS) tests/core/s21_create_matrix_test.c tests/s21_runner.c core/s21_create_matrix.c tests/core/s21_remove_matrix_test.c core/s21_remove_matrix.c  tests/comparison/s21_eq_matrix_test.c comparison/s21_eq_matrix.c tests/opyration/s21_sum_matrix_test.c opyration/s21_sum_matrix.c tests/opyration/s21_sub_matrix_test.c opyration/s21_sub_matrix.c tests/opyration/s21_mult_number_test.c opyration/s21_mult_number.c  tests/opyration/s21_mult_matrix_test.c opyration/s21_mult_matrix.c  tests/advanced/s21_transpose_matrix_test.c  advanced/s21_transpose_matrix.c tests/advanced/s21_determinant_matrix_test.c  advanced/s21_determinant_matrix.c helpers/s21_utils.c tests/advanced/s21_calc_complements_test.c  advanced/s21_calc_complements.c $(CHECK_LIBS) -o test_gcov
+	$(CC) $(CFLAGS) $(GCOV_FLAGS) tests/core/s21_create_matrix_test.c tests/s21_runner.c core/s21_create_matrix.c tests/core/s21_remove_matrix_test.c core/s21_remove_matrix.c  tests/comparison/s21_eq_matrix_test.c comparison/s21_eq_matrix.c tests/opyration/s21_sum_matrix_test.c opyration/s21_sum_matrix.c tests/opyration/s21_sub_matrix_test.c opyration/s21_sub_matrix.c tests/opyration/s21_mult_number_test.c opyration/s21_mult_number.c  tests/opyration/s21_mult_matrix_test.c opyration/s21_mult_matrix.c  tests/advanced/s21_transpose_matrix_test.c  advanced/s21_transpose_matrix.c tests/advanced/s21_determinant_matrix_test.c  advanced/s21_determinant_matrix.c helpers/s21_utils.c tests/advanced/s21_calc_complements_test.c  advanced/s21_calc_complements.c  tests/advanced/s21_inverse_matrix_test.c advanced/s21_inverse_matrix.c $(CHECK_LIBS) -o test_gcov
 	./test_gcov
 	lcov --capture --directory . --base-directory . --output-file coverage.info --no-external --ignore-errors inconsistent
 	genhtml coverage.info --output-directory report --ignore-errors source
