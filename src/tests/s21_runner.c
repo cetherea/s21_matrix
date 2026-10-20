@@ -14,6 +14,7 @@ int main()
   srunner_add_suite(sr, suite_transpose_matrix());
   srunner_add_suite(sr, suite_determinant_matrix());
   srunner_add_suite(sr, suite_complements_matrix());
+  srunner_add_suite(sr, suite_inverse_matrix());
 
   srunner_run_all(sr, CK_NORMAL);
 
