@@ -1,15 +1,15 @@
 #ifndef S21_MATRIX_H
 #define S21_MATRIX_H
-#include <stdlib.h>
 #include <math.h>
+#include <stdlib.h>
 
 #define SUCCESS 1
 #define FAILURE 0
 
 typedef struct matrix_struct {
-    double** matrix;
-    int rows;
-    int columns;
+  double **matrix;
+  int rows;
+  int columns;
 } s21_matrix;
 
 int s21_create_matrix(int rows, int columns, s21_matrix *result);

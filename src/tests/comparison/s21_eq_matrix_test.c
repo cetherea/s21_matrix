@@ -1,7 +1,6 @@
 #include "../s21_runner.h"
 
-START_TEST(basic_test)
-{
+START_TEST(basic_test) {
   int expected_rows = 3;
   int expected_columns = 4;
   s21_matrix A = {0};
@@ -9,10 +8,8 @@ START_TEST(basic_test)
   s21_create_matrix(expected_rows, expected_columns, &A);
   s21_create_matrix(expected_rows, expected_columns, &B);
 
-  for (int i = 0; i < expected_rows; i++)
-  {
-    for (int j = 0; j < expected_columns; j++)
-    {
+  for (int i = 0; i < expected_rows; i++) {
+    for (int j = 0; j < expected_columns; j++) {
       A.matrix[i][j] = i + j;
       B.matrix[i][j] = i + j;
     }
@@ -27,8 +24,7 @@ START_TEST(basic_test)
 }
 END_TEST
 
-START_TEST(no_eq_test)
-{
+START_TEST(no_eq_test) {
   int expected_rows = 3;
   int expected_columns = 4;
   s21_matrix A = {0};
@@ -36,10 +32,8 @@ START_TEST(no_eq_test)
   s21_create_matrix(expected_rows, expected_columns, &A);
   s21_create_matrix(expected_rows, expected_columns, &B);
 
-  for (int i = 0; i < expected_rows; i++)
-  {
-    for (int j = 0; j < expected_columns; j++)
-    {
+  for (int i = 0; i < expected_rows; i++) {
+    for (int j = 0; j < expected_columns; j++) {
       A.matrix[i][j] = i;
       B.matrix[i][j] = j;
     }
@@ -54,8 +48,7 @@ START_TEST(no_eq_test)
 }
 END_TEST
 
-START_TEST(different_size_test)
-{
+START_TEST(different_size_test) {
   int expected_rows = 3;
   int expected_columnsA = 4;
   int expected_columnsB = 5;
@@ -64,18 +57,14 @@ START_TEST(different_size_test)
   s21_create_matrix(expected_rows, expected_columnsA, &A);
   s21_create_matrix(expected_rows, expected_columnsB, &B);
 
-  for (int i = 0; i < expected_rows; i++)
-  {
-    for (int j = 0; j < expected_columnsA; j++)
-    {
+  for (int i = 0; i < expected_rows; i++) {
+    for (int j = 0; j < expected_columnsA; j++) {
       A.matrix[i][j] = 1;
     }
   }
 
-  for (int i = 0; i < expected_rows; i++)
-  {
-    for (int j = 0; j < expected_columnsB; j++)
-    {
+  for (int i = 0; i < expected_rows; i++) {
+    for (int j = 0; j < expected_columnsB; j++) {
       B.matrix[i][j] = 1;
     }
   }
@@ -89,8 +78,7 @@ START_TEST(different_size_test)
 }
 END_TEST
 
-START_TEST(null_matrix_test)
-{
+START_TEST(null_matrix_test) {
   int expected_rows = 3;
   int expected_columnsA = 4;
   s21_matrix A = {0};
@@ -104,8 +92,7 @@ START_TEST(null_matrix_test)
 }
 END_TEST
 
-START_TEST(empty_matrix_test)
-{
+START_TEST(empty_matrix_test) {
   int expected_rows = 3;
   int expected_columns = 4;
   s21_matrix A = {0};
@@ -124,8 +111,7 @@ START_TEST(empty_matrix_test)
 }
 END_TEST
 
-START_TEST(double_matrix_test)
-{
+START_TEST(double_matrix_test) {
   int expected_rows = 3;
   int expected_columns = 4;
   s21_matrix A = {0};
@@ -133,10 +119,8 @@ START_TEST(double_matrix_test)
   s21_create_matrix(expected_rows, expected_columns, &A);
   s21_create_matrix(expected_rows, expected_columns, &B);
 
-  for (int i = 0; i < expected_rows; i++)
-  {
-    for (int j = 0; j < expected_columns; j++)
-    {
+  for (int i = 0; i < expected_rows; i++) {
+    for (int j = 0; j < expected_columns; j++) {
       A.matrix[i][j] = i + j;
       B.matrix[i][j] = i + j + 1e-7;
     }
@@ -151,8 +135,7 @@ START_TEST(double_matrix_test)
 }
 END_TEST
 
-Suite *suite_eq_matrix(void)
-{
+Suite *suite_eq_matrix(void) {
   Suite *s = suite_create("eq_matrix");
 
   TCase *tcase_basic = tcase_create("basic");

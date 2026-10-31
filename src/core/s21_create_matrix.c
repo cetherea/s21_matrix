@@ -8,8 +8,7 @@ int s21_create_matrix(int rows, int columns, s21_matrix *result) {
     result->rows = rows;
     result->columns = columns;
     result->matrix = (double **)malloc(rows * sizeof(double *));
-    if (result->matrix == NULL)
-      error = 1;
+    if (result->matrix == NULL) error = 1;
     for (int i = 0; i < rows && !error; i++) {
       result->matrix[i] = (double *)malloc(columns * sizeof(double));
     }

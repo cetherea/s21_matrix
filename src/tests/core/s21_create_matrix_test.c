@@ -1,7 +1,6 @@
 #include "../s21_runner.h"
 
 START_TEST(basic_test) {
-
   int expected_rows = 3;
   int expected_columns = 4;
   s21_matrix matrix = {0};
